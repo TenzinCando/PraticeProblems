@@ -4,3 +4,6 @@
 .project
 *.class
 bin/*
+
+# visual studio code
+.vscode/*
