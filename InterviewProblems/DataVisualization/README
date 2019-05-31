@@ -1,0 +1,4 @@
+#2019-05-31 Tenzin Khando
+
+Create a function that will take the input from graph_data.json and parse the data.
+The output will be an array of objects, which shows the total amount of each paytype_id per day.
