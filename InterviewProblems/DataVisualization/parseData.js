@@ -1,5 +1,11 @@
+/*
+Author:         Tenzin Khando
+Date:           2019-05-31
+Description:    consilate a json data to get the total amount for each paytype_id daily
+*/
+
 // why can't i use reduce? 
-    // reduce just returns one value
+    // reduce just returns one value by going through each element in the array
 
 // why can't i use filter?
     // filter returns an array that matches a condition but i need all the objects in the array
