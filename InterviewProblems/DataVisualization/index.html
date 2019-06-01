@@ -85,7 +85,7 @@ var xAxis = d3.svg.axis()
   .scale(x)
   .orient("bottom")
   .ticks(15)
-  .tickFormat(d3.time.format("%m/%d/%Y"));
+  .tickFormat(d3.time.format("%m/%d"));
 
 svg.append("g")
   .attr("class", "y axis")
@@ -118,7 +118,7 @@ var rect = groups.selectAll("rect")
     var xPosition = d3.mouse(this)[0] - 15;
     var yPosition = d3.mouse(this)[1] - 25;
     tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-    tooltip.select("text").text(d.x + ' ' + d.y);
+    tooltip.select("text").text(d.y);
   });
 
 
