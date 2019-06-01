@@ -986,20 +986,6 @@ var input = {
             "date": "2017-11-30",
             "provider_id": "AB",
             "employee_type_id": 2
-        },
-        {
-            "paytype_id": 5,
-            "amount": 100000000000000000000000000000000,
-            "date": "2017-11-31",
-            "provider_id": "AB",
-            "employee_type_id": 2
-        },
-        {
-            "paytype_id": 5,
-            "amount": 100000000000000000000000000000000,
-            "date": "2017-11-31",
-            "provider_id": "AB",
-            "employee_type_id": 2
         }
     ],
     "categories": {

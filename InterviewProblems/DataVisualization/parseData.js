@@ -10,9 +10,17 @@ Description:    consilate a json data to get the total amount for each paytype_i
 // why can't i use filter?
     // filter returns an array that matches a condition but i need all the objects in the array
 
-//console.log(input);
-// create a new array based on the data
-var totalPayTypePerDay = function(data) {
+// why i didn't use map?
+    // map returns the same array length as passed. We are reducing the size of the data which wouldn't work.
+
+/*
+Author:         Tenzin Khando
+Date:           2019-05-31
+create a new array based on the data
+@param  data
+@return array of objects that is total of all pay types for that day
+*/
+var totalPayTypePerDay = (data) => {
     // create a empty variable to save date
     var outputArray = [],
         payTypesPerDay = {};
@@ -44,7 +52,18 @@ var totalPayTypePerDay = function(data) {
     // account for the last index
     outputArray.push(payTypesPerDay);
     return outputArray;
-}
+};
 
-// parse the json input
-// console.log(totalPayTypePerDay(input));
+/*
+Author:         Tenzin Khando
+Date:           2019-05-31
+@param  payTypesObject
+@return array with list of pay type ids
+*/
+var payTypeList = (payTypesObject) => {
+    var payTypes = [];
+    for( var key in payTypesObject) {
+        payTypes.push(key);
+    }
+    return payTypes;
+};
