@@ -7,6 +7,7 @@
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="./input.js"></script>
   <script src="./parseData.js"></script>
+  <script src="./responsived3.js"></script>
   <style type="text/css">
     svg {
       font: 10px sans-serif;
@@ -41,6 +42,7 @@ var svg = d3.select("body")
   .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
+  .call(responsivefy)
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
