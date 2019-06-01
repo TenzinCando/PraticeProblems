@@ -9,7 +9,6 @@ var parse = d3.time.format("%Y-%m-%d").parse;
 // Transpose the data into layers
 var dataset = d3.layout.stack()( payTypesIds.map(function(payType) {
   return data.map(function(d) {
-    // TODO: not stacking properly
     return {x: parse(d.date), y: ((payType in d) ? +d[payType] : 0 ) };
   });
 }));
@@ -22,9 +21,6 @@ var x = d3.scale.ordinal()
 var y = d3.scale.linear()
   .domain([0, d3.max(dataset, function(d) {  return d3.max(d, function(d) { return d.y0 + d.y; });  })])
   .range([height, 0]);
-
-var colors = ["#8F9779", "#4B6F44", "#87A96B", "#568203", "#71BC78", "#228B22", "#29AB87",
-              "#A9BA9D", "#BFFF00", "#74C365", "#3EB489", "#8A9A5B", "#4A5D23", "#317873"];
 
 // Define and draw axes
 var yAxis = d3.svg.axis()
@@ -94,7 +90,6 @@ legend.append("text")
   .attr("dy", ".35em")
   .style("text-anchor", "start")
   .text(function(d, i) { 
-      // TODO: lengend
       return payTypesIdsMap[i+1];
   });
 
@@ -105,14 +100,15 @@ var tooltip = svg.append("g")
   .style("display", "none");
     
 tooltip.append("rect")
-  .attr("width", 30)
+  .attr("width", 60)
   .attr("height", 20)
-  .attr("fill", "white")
-  .style("opacity", 0.5);
+  .attr("fill", "black")
+  .style("opacity", 0.8);
 
 tooltip.append("text")
-  .attr("x", 15)
+  .attr("x", 30)
   .attr("dy", "1.2em")
   .style("text-anchor", "middle")
   .attr("font-size", "12px")
-  .attr("font-weight", "bold");
+  .attr("font-weight", "bold")
+  .attr("fill", "white");

@@ -17,15 +17,16 @@ Description:    consilate a json data to get the total amount for each paytype_i
 Author:         Tenzin Khando
 Date:           2019-05-31
 create a new array based on the data
-@param  data
+@param  data    array type
 @return array of objects that is total of all pay types for that day
 */
 var totalPayTypePerDay = (data) => {
     // create a empty variable to save date
     var outputArray = [],
         payTypesPerDay = {};
+
     // create an empty array to store each object
-    data.values.forEach(function(value) {
+    data.forEach(function(value) {
         // for the first occurance where the object is empty
         if ( !('date' in payTypesPerDay) ) {
             payTypesPerDay = {date: value.date};
@@ -38,11 +39,10 @@ var totalPayTypePerDay = (data) => {
         // see if the key exists, for the paytype_id value
         var payType = value.paytype_id;
         if (payType in payTypesPerDay) {
-            // if the key exists, accumlate this value and the existing value
+            // if the key exists, add this value with the existing value
             // round the amount to 2 decimal places
             var newAmount = (payTypesPerDay[payType] + value.amount + 0.00001);
-            payTypesPerDay[payType] = Math.round( newAmount * 100) / 100;
-            
+            payTypesPerDay[payType] = Math.round( newAmount * 100) / 100;  
         } else {
             // if the key doesn't exists, create a new key and set the amount as value
             payTypesPerDay[payType] = value.amount;
