@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>d3.js learning</title>
+  <title>Pratice by Numbers</title>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="./input.js"></script>
@@ -48,10 +48,13 @@ var svg = d3.select("body")
 
 // parse the json input
 // console.log(totalPayTypePerDay(input));
-var data = totalPayTypePerDay(input);
-console.log(data);
+var data = totalPayTypePerDay(input.values);
 var payTypesIdsMap = input.categories.paytype_ids;
 var payTypesIds = payTypeList(payTypesIdsMap);
+
+var colors = 
+    ["#8F9779", "#4B6F44", "#87A96B", "#568203", "#71BC78", "#228B22", "#29AB87",
+     "#A9BA9D", "#BFFF00", "#74C365", "#3EB489", "#8A9A5B", "#4A5D23", "#317873"];
 
 </script>
 <script src="./d3config.js"></script>
