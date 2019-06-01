@@ -17,7 +17,7 @@ Description:    consolidate an array data to get the daily total amount for each
 @param  values    array type
 @return array of objects that is total of all pay types for that day
 */
-let totalPayTypePerDay = ( values = [] ) => {
+var totalPayTypePerDay = ( values = [] ) => {
     // check if values is empty
     if (values.length === 0) return [];
 
@@ -30,7 +30,7 @@ let totalPayTypePerDay = ( values = [] ) => {
         if ( payTypesPerDay.date !== value.date ) {
             // then push the object into the array, set to empty object  
             outputArray.push(payTypesPerDay);
-            payTypesPerDay = {date: value.date};
+            payTypesPerDay = { date: value.date };
         }
 
         let { paytype_id: payType, amount } = value;
@@ -51,3 +51,6 @@ let totalPayTypePerDay = ( values = [] ) => {
     return outputArray;
 };
 
+var payTypeList = ( payTypesIdsMap = {} ) => {
+    return Object.keys(payTypesIdsMap);
+}

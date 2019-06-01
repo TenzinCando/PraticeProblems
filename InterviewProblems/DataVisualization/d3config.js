@@ -4,33 +4,33 @@ Date:           2019-06-01
 Description:    Setting up and configuring the layout of d3 graph
 */
 
-var parse = d3.time.format("%Y-%m-%d").parse;
+let parse = d3.time.format("%Y-%m-%d").parse;
 
 // Transpose the data into layers
-var dataset = d3.layout.stack()( payTypesIds.map(function(payType) {
+let dataset = d3.layout.stack()( payTypesIds.map(function(payType) {
   return data.map(function(d) {
     return {x: parse(d.date), y: ((payType in d) ? +d[payType] : 0 ) };
   });
 }));
 
 // Set x, y and colors
-var x = d3.scale.ordinal()
+let x = d3.scale.ordinal()
   .domain(dataset[0].map(function(d) { return d.x; }))
   .rangeRoundBands([10, width-10], 0.02);
 
-var y = d3.scale.linear()
+let y = d3.scale.linear()
   .domain([0, d3.max(dataset, function(d) {  return d3.max(d, function(d) { return d.y0 + d.y; });  })])
   .range([height, 0]);
 
 // Define and draw axes
-var yAxis = d3.svg.axis()
+let yAxis = d3.svg.axis()
   .scale(y)
   .orient("left")
   .ticks(5)
   .tickSize(-width, 0, 0)
   .tickFormat( function(d) { return d } );
 
-var xAxis = d3.svg.axis()
+let xAxis = d3.svg.axis()
   .scale(x)
   .orient("bottom")
   .ticks(15)
@@ -47,13 +47,13 @@ svg.append("g")
 
 
 // Create groups for each series, rects for each segment 
-var groups = svg.selectAll("g.cost")
+let groups = svg.selectAll("g.cost")
   .data(dataset)
   .enter().append("g")
   .attr("class", "cost")
   .style("fill", function(d, i) { return colors[i]; });
 
-var rect = groups.selectAll("rect")
+let rect = groups.selectAll("rect")
   .data(function(d) { return d; })
   .enter()
   .append("rect")
@@ -64,15 +64,15 @@ var rect = groups.selectAll("rect")
   .on("mouseover", function() { tooltip.style("display", null); })
   .on("mouseout", function() { tooltip.style("display", "none"); })
   .on("mousemove", function(d) {
-    var xPosition = d3.mouse(this)[0] - 15;
-    var yPosition = d3.mouse(this)[1] - 25;
+    let xPosition = d3.mouse(this)[0] - 15;
+    let yPosition = d3.mouse(this)[1] - 25;
     tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
     tooltip.select("text").text('$' + d.y);
   });
 
 
 // Draw legend
-var legend = svg.selectAll(".legend")
+let legend = svg.selectAll(".legend")
   .data(colors)
   .enter().append("g")
   .attr("class", "legend")
@@ -95,7 +95,7 @@ legend.append("text")
 
 
 // Prep the tooltip bits, initial display is hidden
-var tooltip = svg.append("g")
+let tooltip = svg.append("g")
   .attr("class", "tooltip")
   .style("display", "none");
     
