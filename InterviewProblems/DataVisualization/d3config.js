@@ -69,7 +69,7 @@ let rect = groups.selectAll("rect")
   .on("mousemove", function(d) {
       console.log('moving mouse');
     let xPosition = d3.mouse(this)[0] - 15;
-    let yPosition = d3.mouse(this)[1] - 25;
+    let yPosition = d3.mouse(this)[1] - 40;
     tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
     tooltip.select("text").html( `${d.label}<br>$${d.y}`);
     tooltip.selectAll("text").text(function(i, t) {
