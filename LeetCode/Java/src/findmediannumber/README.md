@@ -1,26 +1,37 @@
 # Problem
-Write code that will perform division without using any multiplication, division and mod operator.
+Write a function that will return the median number for a application that collects movie reviews. This number will be real-time value as it will be called everytime a review is collected.
 
 # Assumptions:
-- Both dividend and divisor will be 32-bit signed integers.
-- The divisor will never be 0.
-- Your function returns 2^31 − 1 when the division result overflows.
+- The input will range between 1-10
+- Reviews can have duplicate inputs
+- If the collected reviews has a even size array, then pick either size/2
 
 # Example
-Input: 	dividend = 10, divisor = 3
-Output: 3
+Input: 	1
+Output: 1
+Reviews:[1]
 
-Input: 	dividend = 7, divisor = -3
-Output: -2
+Input: 	4
+Output: 1
+Reviews:[1,4]
+
+Input: 	6
+Output: 4
+Reviews:[1,4,6]
+
+Input: 	3
+Output: 3
+Reviews:[1,3,4,6]
+
+Input: 	3
+Output: 3
+Reviews:[1,3,3,4,6]
 
 # Solution
+Will be using two PriorityQueue to calculate the median number.
 
-Consider
-- when dividend is the max_int OR min_int
-- DONE when dividend and divisor is the same number but one is negative
-- DONE negative divisor
-- DONE negative dividend
-- DONE negative divisor and dividend 
-- DONE divisor is 0 OR dividend is 0
-- DONE divisor is 0 AND dividend is 0
-- DONE divisor and dividend are the same
+Test
+- Test for negative inputs or out of range
+- Test with 1 input size
+- Test with 2 input size
+- Test with 500 input size
