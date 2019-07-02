@@ -11,6 +11,25 @@ import org.junit.*;
 public class DivideTwoIntegersTest {
 
 	/*
+	 * This function is used throughout the code for testing. Easier to
+	 * understand how the test is done by knowing this first.
+	 * 
+	 * executeTests( dividend, divisor, expectedResult, funcName)
+	 */
+	private void executeTests(int dividend, int divisor, int expectedResult,
+			String funcName) {
+		final int expected = expectedResult;
+
+		int solution = new DivideTwoIntegers().divide(dividend, divisor);
+		System.out.println(funcName);
+		System.out.println("DIVIDEND: " + dividend + "\t DIVISOR: " + divisor);
+		System.out
+				.println("Expected: " + expected + " | Solution: " + solution);
+
+		Assert.assertEquals(expected, solution);
+	}
+
+	/*
 	 * negativeDivisor
 	 * 
 	 * executeTests( dividend, divisor, expectedResult, funcName)
@@ -78,25 +97,6 @@ public class DivideTwoIntegersTest {
 	@Test
 	public void divideByZeroDivisor() {
 		executeTests(0, 7, 0, "divideByZero");
-	}
-
-	/*
-	 * This function is used throughout the code for testing. Easier to
-	 * understand how the test is done by knowing this first.
-	 * 
-	 * executeTests( dividend, divisor, expectedResult, funcName)
-	 */
-	private void executeTests(int dividend, int divisor, int expectedResult,
-			String funcName) {
-		final int expected = expectedResult;
-
-		int solution = new DivideTwoIntegers().divide(dividend, divisor);
-		System.out.println(funcName);
-		System.out.println("DIVIDEND: " + dividend + "\t DIVISOR: " + divisor);
-		System.out
-				.println("Expected: " + expected + " | Solution: " + solution);
-
-		Assert.assertEquals(expected, solution);
 	}
 
 	/*
